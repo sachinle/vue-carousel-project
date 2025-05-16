@@ -9,46 +9,17 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      height: 100vh;
     }
 
     .bg-image {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg.jpg') no-repeat center center/cover;
-      height: 100vh;
-    }
-
-    .icon-dock {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 2rem;
-      padding: 0.5rem 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3rem;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    .icon-dock a {
-      color: #fff;
-      font-size: 1.8rem;
-      transition: all 0.3s ease;
-    }
-
-    .icon-dock a:hover {
-      color: #ffc107;
-      transform: scale(1.25);
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('bg.jpg') no-repeat center center;
+      background-size: cover;
     }
 
     .bounce {
@@ -59,61 +30,24 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
-
-    /* Responsive Enhancements */
-    @media (max-width: 768px) {
-      .icon-dock {
-        flex-direction: row;
-        gap: 0.8rem;
-        padding: 0.5rem 0.8rem;
-      }
-
-      .icon-dock a {
-        font-size: 1.5rem;
-      }
-
-      h1.display-4 {
-        font-size: 2rem;
-      }
-
-      h3 {
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .icon-dock {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .icon-dock a {
-        font-size: 1.3rem;
-      }
-
-      h1.display-4 {
-        font-size: 1.6rem;
-      }
-
-      h3 {
-        font-size: 0.9rem;
-      }
-    }
   </style>
 </head>
 <body>
   <div id="app">
-    <div class="bg-image d-flex flex-column">
-      <div class="icon-dock">
-        <a href="mailto:sachinimmanuel2006@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="tel:+916380734733" title="Call"><i class="fas fa-phone"></i></a>
-        <a href="https://www.linkedin.com/in/sachin-immanuel-leo-s-654244210/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/sachinle?tab=repositories" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="Sachin Leo Resume.pdf" download title="Download Resume"><i class="fas fa-file-alt"></i></a>
+    <!-- Background Section -->
+    <div class="bg-image vh-100 d-flex flex-column">
+
+      <!-- Icon Dock -->
+      <div class="d-flex justify-content-center gap-4 flex-wrap py-3 position-fixed top-0 start-50 translate-middle-x bg-opacity-25 bg-white rounded-pill shadow px-3 mt-2 z-3">
+        <a href="mailto:sachinimmanuel2006@gmail.com" title="Email" class="text-white fs-4"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+916380734733" title="Call" class="text-white fs-4"><i class="fas fa-phone"></i></a>
+        <a href="https://www.linkedin.com/in/sachin-immanuel-leo-s-654244210/" target="_blank" title="LinkedIn" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sachinle?tab=repositories" target="_blank" title="GitHub" class="text-white fs-4"><i class="fab fa-github"></i></a>
+        <a href="Sachin Leo Resume.pdf" download title="Download Resume" class="text-white fs-4"><i class="fas fa-file-alt"></i></a>
       </div>
 
-      <div class="text-white text-center flex-grow-1 d-flex flex-column justify-content-center align-items-center px-3 text-center">
+      <!-- Center Content -->
+      <div class="text-white text-center d-flex flex-column justify-content-center align-items-center flex-grow-1 px-3">
         <div v-for="content in contents" :key="content.id">
           <h1 class="fw-bold display-4">{{ content.title1 }}</h1>
           <h3 class="fw-light">{{ content.title2 }}</h3>
