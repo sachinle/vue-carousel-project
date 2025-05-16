@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Page</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.4.21/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="bg-dark text-dark">
+
+  <div id="app" class="container py-5">
+    <div class="bg-white rounded shadow p-4 mb-5">
+      <h2 class="text-center mb-4">My Skills</h2>
+
+      <div id="skillsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner text-center">
+          <div 
+            class="carousel-item py-4" 
+            v-for="(skill, index) in skills" 
+            :class="{ active: index === 0 }"
+          >
+            <i :class="['display-1 text-primary mb-3', skill.iconClass]"></i>
+            <h5 class="fw-semibold">{{ skill.label }}</h5>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#skillsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-primary rounded-circle p-2" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#skillsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-primary rounded-circle p-2" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded shadow p-4">
+      <h2 class="text-center mb-4">Languages</h2>
+
+      <div v-for="lang in languages" :key="lang.name" class="mb-4">
+        <label class="form-label fw-bold">{{ lang.name }}</label>
+        <div class="progress">
+          <div 
+            class="progress-bar bg-success" 
+            role="progressbar" 
+            :style="{ width: lang.level + '%' }" 
+            :aria-valuenow="lang.level" 
+            aria-valuemin="0" 
+            aria-valuemax="100"
+          >
+            {{ lang.level }}%
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          skills: [
+            { iconClass: 'fab fa-html5', label: 'HTML' },
+            { iconClass: 'fab fa-css3-alt', label: 'CSS' },
+            { iconClass: 'fab fa-js', label: 'JavaScript' },
+            { iconClass: 'fab fa-vuejs', label: 'Vue.js' },
+            { iconClass: 'fas fa-database', label: 'MongoDB' }
+          ],
+          languages: [
+            { name: 'Tamil', level: 100 },
+            { name: 'English', level: 95 }
+          ]
+        }
+      }
+    }).mount('#app');
+  </script>
+
+</body>
+</html>
